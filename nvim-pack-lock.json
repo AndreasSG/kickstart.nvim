@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "nvim-lspconfig": {
+      "rev": "ececa53",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    }
+  }
+}

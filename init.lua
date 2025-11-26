@@ -61,7 +61,7 @@ vim.o.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', eol = '↵' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -140,6 +140,10 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.pack.add {
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+}
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -607,20 +611,27 @@ require('lazy').setup({
   },
 
   { -- You can easily change to a different colorscheme.
-    'cpea2506/one_monokai.nvim',
+    'fratajczak/one-monokai-vim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require('one_monokai').setup {
-        styles = {
-          comments = { italic = false }, -- Disable italics in comments
-        },
-      }
-
-      vim.cmd.colorscheme 'one_monokai'
+      vim.cmd.colorscheme 'one-monokai'
     end,
   },
-
+  -- { -- You can easily change to a different colorscheme.
+  --   'cpea2506/one_monokai.nvim',
+  --   priority = 1000, -- Make sure to load this before all the other start plugins.
+  --   config = function()
+  --     ---@diagnostic disable-next-line: missing-fields
+  --     require('one_monokai').setup {
+  --       styles = {
+  --         comments = { italic = false }, -- Disable italics in comments
+  --       },
+  --     }
+  --
+  --     vim.cmd.colorscheme 'one_monokai'
+  --   end,
+  -- },
+  --
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
